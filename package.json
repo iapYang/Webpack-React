@@ -1,0 +1,23 @@
+{
+  "name": "learn-webpack-react",
+  "version": "1.0.0",
+  "description": "## webpack（1d）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://iapYang@github.com/iapYang/learn-webpack-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iapYang/learn-webpack-react/issues"
+  },
+  "homepage": "https://github.com/iapYang/learn-webpack-react#readme",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "style-loader": "^0.13.1"
+  }
+}
