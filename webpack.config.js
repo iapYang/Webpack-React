@@ -1,13 +1,19 @@
 var path = require('path');
+var WebpackDevServer = require("webpack-dev-server");
+var webpack = require("webpack");
 
 var dir_dev = './dev';
 
 
 module.exports = {
-    entry: path.resolve(dir_dev,'component/index.js'),
+    entry: path.resolve(dir_dev, 'component/index.js'),
     output: {
         path: './dist',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+    },
+    devServer: {
+        inline: true,
+        port: 10000,
     },
     devtool: 'source-map',
     module: {
