@@ -7,10 +7,11 @@ var dir_dev = './dev';
 
 
 module.exports = {
-    entry: path.resolve(dir_dev, 'component/index.js'),
+    entry: path.resolve(dir_dev, 'index.jsx'),
     output: {
         path: './dist',
         filename: 'bundle.js',
+        publicPath: '/assets/',
     },
     devServer: {
         inline: true,
@@ -18,14 +19,9 @@ module.exports = {
     },
     devtool: 'source-map',
     plugins: [
-        new CopyWebpackPlugin([
-            // {output}/to/directory/file.txt
-            { from: './dev/index.html', to: './dist' },
-
-            // Copy glob results to /absolute/path/
-            { from: './dev/vendor/**/*', to: './dist/vendor' },
-
-        ], {
+        new CopyWebpackPlugin([{
+            // from: './dev/index.html'
+        }, ], {
             ignore: [
 
             ],
@@ -33,8 +29,8 @@ module.exports = {
             // By default, we only copy modified files during
             // a watch or webpack-dev-server build. Setting this
             // to `true` copies all files.
-            copyUnmodified: true
-        })
+            // copyUnmodified: true
+        }),
     ],
     module: {
         loaders: [{
@@ -45,7 +41,7 @@ module.exports = {
                 'postcss-loader',
             ],
         }, {
-            test: /\.js$/,
+            test: /\.(js|jsx)$/,
             loader: 'babel-loader',
             exclude: /node_module/,
             query: {
