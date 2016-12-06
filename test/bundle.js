@@ -44,9 +44,15 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
-	console.log(__webpack_require__(5));
+	'use strict';
 
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./test.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	__webpack_require__(1);
+
+	console.log(__webpack_require__(5));
+	var xxx = 55;
+	console.log(xxx);
 
 /***/ },
 /* 1 */
@@ -400,8 +406,9 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "It works from content.js.";
+	"use strict";
 
+	module.exports = "It works from content.js.";
 
 /***/ }
 /******/ ]);
