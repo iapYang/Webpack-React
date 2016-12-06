@@ -1,12 +1,12 @@
 var path = require('path');
 
-var dir_dev = './test';
+var dir_dev = './dev';
 
 
 module.exports = {
-    entry: './test/entry.js',
+    entry: path.resolve(dir_dev,'component/index.js'),
     output: {
-        path: './test',
+        path: './dist',
         filename: 'bundle.js'
     },
     devtool: 'source-map',
