@@ -1,4 +1,4 @@
-require('./style.css');
+import './style.css';
 import './test.scss';
 console.log(require('./content.js'));
 let xxx = 55;
