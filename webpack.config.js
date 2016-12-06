@@ -5,13 +5,15 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var dir_dev = './dev';
 
+//command
+//webpack-dev-server --progress --colors
 
 module.exports = {
     entry: path.resolve(dir_dev, 'index.jsx'),
     output: {
         path: './dist',
         filename: 'bundle.js',
-        publicPath: '/assets/',
+        // publicPath: '/assets/',
     },
     devServer: {
         inline: true,
@@ -20,8 +22,8 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
         new CopyWebpackPlugin([{
-            // from: './dev/index.html'
-        }, ], {
+            from: './dev/index.html'
+        }], {
             ignore: [
 
             ],
