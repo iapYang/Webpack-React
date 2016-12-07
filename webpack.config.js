@@ -22,7 +22,9 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
         new CopyWebpackPlugin([{
-            from: './dev/index.html'
+            from: './dev/index.html',
+        },{
+            from: './dev/favicon.ico',
         }], {
             ignore: [
 
