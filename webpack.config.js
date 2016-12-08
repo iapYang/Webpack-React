@@ -23,7 +23,7 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin([{
             from: './dev/index.html',
-        },{
+        }, {
             from: './dev/favicon.ico',
         }], {
             ignore: [
