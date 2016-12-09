@@ -1,0 +1,40 @@
+#container {
+    .game {
+        .game-board {
+            .game-board-wrapper {
+                position: relative;
+
+                .status {
+                    margin-bottom: 10px;
+                    font-size: 30px;
+                }
+
+                .board-row {
+                    position: relative;
+
+                    .square {
+                        position: relative;
+                        display: inline-block;
+                        box-sizing: border-box;
+                        width: 60px;
+                        height: 60px;
+                        margin-right: 20px;
+                        margin-bottom: 20px;
+                        cursor: pointer;
+                        text-align: center;
+                        vertical-align: top;
+                        border: 1px solid black;
+                        font-size: 0;
+
+                        span {
+                            position: relative;
+                            display: inline;
+                            font-size: 30px;
+                            line-height: 60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
