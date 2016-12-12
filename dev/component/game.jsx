@@ -9,7 +9,7 @@ class Game extends React.Component {
                 squares: Array(9).fill(null)
             }],
             xIsNext: true,
-            stepNumber: 0
+            stepNumber: 0,
         };
     }
     jumpTo(step) {
@@ -31,12 +31,20 @@ class Game extends React.Component {
                 squares: squares
             }]),
             xIsNext: !this.state.xIsNext,
+            stepNumber: history.length,
         });
     }
     render() {
         const history = this.state.history;
-        const current = history[history.length - 1];
+        const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
+
+        let status;
+        if (winner) {
+            status = 'Winner: ' + winner;
+        } else {
+            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
 
         const moves = history.map((step, move) => {
             const desc = move ?
@@ -71,14 +79,6 @@ class Game extends React.Component {
         );
     }
 }
-
-var player = {score: 1, name: 'Jeff'};
-
-var newPlayer = Object.assign({}, player, {score: 2});
-// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
-
-// Or if you are using object spread, you can write:
-// var newPlayer = {score: 2, ...player};
 
 function calculateWinner(squares) {
     const lines = [
