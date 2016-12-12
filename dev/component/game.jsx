@@ -8,20 +8,64 @@ class Game extends React.Component {
             history: [{
                 squares: Array(9).fill(null)
             }],
-            xIsNext: true
+            xIsNext: true,
+            stepNumber: 0
         };
     }
+    jumpTo(step) {
+        this.setState({
+            stepNumber: step,
+            xIsNext: (step % 2) ? false : true,
+        });
+    }
+    handleClick(i) {
+        const history = this.state.history;
+        const current = history[this.state.stepNumber];
+        const squares = current.squares.slice();
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        }
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        this.setState({
+            history: history.concat([{
+                squares: squares
+            }]),
+            xIsNext: !this.state.xIsNext,
+        });
+    }
     render() {
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        const winner = calculateWinner(current.squares);
+
+        const moves = history.map((step, move) => {
+            const desc = move ?
+            'Move #' + move :
+            'Game start';
+            return (
+                <li key={move}>
+                    <a href="#" onClick={() => this.jumpTo(move)}>
+                        {desc}
+                    </a>
+                </li>
+            );
+        });
+
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board />
+                    <Board
+                        squares={current.squares}
+                        onClick={(i) => this.handleClick(i)}
+                        />
                 </div>
                 <div className="game-info">
-                    <div>
-                        {/* status */}
+                    <div className="game-status">
+                        {status}
                     </div>
-                    <ol>{/* TODO */}</ol>
+                    <ol>
+                        {moves}
+                    </ol>
                 </div>
             </div>
         );
@@ -35,5 +79,25 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 // Or if you are using object spread, you can write:
 // var newPlayer = {score: 2, ...player};
+
+function calculateWinner(squares) {
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            return squares[a];
+        }
+    }
+    return null;
+}
 
 export default Game;
