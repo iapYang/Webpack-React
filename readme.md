@@ -30,7 +30,7 @@
 
 ### 跟着官方教程demo做一个xo棋（0.5d）
 
-- [ ] [点击访问](https://facebook.github.io/react/tutorial/tutorial.html)
+- [x] [点击访问](https://facebook.github.io/react/tutorial/tutorial.html)
 
 ### 实现前端框架的几个小案例（1d）
 
