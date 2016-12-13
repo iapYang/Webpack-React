@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Calculator from './component/calculator.jsx';
 import Game from './component/game.jsx';
+import Nav from './component/nav.jsx';
 import './styles/index.scss';
 import './scripts/index.js';
 
@@ -13,4 +14,9 @@ import './scripts/index.js';
 ReactDOM.render(
   <Game />,
   document.getElementById('container')
+);
+
+ReactDOM.render(
+  <Nav />,
+  document.getElementById('nav')
 );
