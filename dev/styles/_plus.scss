@@ -1,0 +1,75 @@
+@import url( 'https://fonts.googleapis.com/css?family=Cookie');
+
+#plus {
+    position: relative;
+
+    .plus-wrapper {
+        position: relative;
+        width: 600px;
+        margin: 0 auto;
+        background-color: #61a1bc;
+
+        .plus-header {
+            position: relative;
+            text-align: center;
+
+            span {
+                display: inline-block;
+                color: #fff;
+                text-shadow: 0 3px 0 rgba(0,0,0,0.1);
+                font-family: 'Cookie', cursive;
+                font-size: 64px;
+                font-weight: normal;
+                line-height: 1;
+            }
+        }
+    }
+
+    .plus-content {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+
+        ul {
+            position: relative;
+            display: block;
+
+            li {
+                position: relative;
+                display: block;
+                margin-top: 10px;
+                padding: 20px 0;
+                cursor: pointer;
+                background-color: #e35885;
+
+                .li-wrapper {
+                    position: relative;
+                    display: block;
+                    margin: 0 30px;
+
+                    span {
+                        position: relative;
+                        display: inline-block;
+                        color: #fff;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+
+                    .prize {
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        .line {
+            position: relative;
+            background-color: #fff;
+            height: 1px;
+            margin: 10px 0;
+        }
+    }
+
+
+}

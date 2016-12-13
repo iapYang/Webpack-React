@@ -1,16 +1,16 @@
-html,body {
+body,
+html {
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
-    padding: 0;
-    border: 0;
     margin: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    background-color: #f1f1f1;
+    padding: 0;
     transition: all ease 0.3s;
+    border: 0;
+    background-color: #f1f1f1;
 }
-
 @import "./global.scss";
 @import "./container.scss";
 @import "./nav.scss";
 @import "./input.scss";
+@import "./plus.scss";

@@ -1,6 +1,7 @@
 #input {
     position: relative;
     display: block;
+    background-color: #383838;
 
     .input-wrapper {
         display: block;
@@ -10,13 +11,13 @@
 
         .input-form {
             position: relative;
+            visibility: hidden;
             text-align: center;
             opacity: 0;
-            visibility: hidden;
 
             &.show {
-                opacity: 1;
                 visibility: visible;
+                opacity: 1;
             }
 
             input {
