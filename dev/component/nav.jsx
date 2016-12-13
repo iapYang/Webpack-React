@@ -56,8 +56,10 @@ function Details(props) {
 
     return (
         <div className="nav-body">
-            <span>You chose </span>
-            <span className="nav-name">{name}</span>
+            <div className="nav-body-wrapper">
+                <span>You chose </span>
+                <span className="nav-name">{name}</span>
+            </div>
         </div>
     );
 }

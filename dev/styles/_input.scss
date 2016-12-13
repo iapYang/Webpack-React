@@ -1,0 +1,54 @@
+#input {
+    position: relative;
+    display: block;
+
+    .input-wrapper {
+        display: block;
+        width: 100%;
+        height: 300px;
+        padding-top: 60px;
+
+        .input-form {
+            position: relative;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+
+            &.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            input {
+                display: inline-block;
+                width: 300px;
+                padding: 10px 0;
+                text-align: center;
+                color: #8d9395;
+                font-size: 20px;
+            }
+        }
+
+        .input-body {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+
+            .input-body-wrapper {
+                position: relative;
+                display: inline-block;
+                margin-top: 20px;
+
+                span {
+                    display: inline-block;
+                    color: #6d8088;
+                    font-size: 20px;
+                }
+
+                .input-pencil {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
