@@ -4,6 +4,7 @@ import Calculator from './component/calculator.jsx';
 import Game from './component/game.jsx';
 import Nav from './component/nav.jsx';
 import Input from './component/input.jsx';
+import Plus from './component/plus.jsx';
 import './styles/index.scss';
 import './scripts/index.js';
 
@@ -25,4 +26,9 @@ ReactDOM.render(
 ReactDOM.render(
   <Input />,
   document.getElementById('input')
+);
+
+ReactDOM.render(
+  <Plus />,
+  document.getElementById('plus')
 );
