@@ -25,6 +25,9 @@ module.exports = {
             from: './dev/index.html',
         }, {
             from: './dev/favicon.ico',
+        },{
+            from: './dev/images',
+            to: './images',
         }], {
             ignore: [
 

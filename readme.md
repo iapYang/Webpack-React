@@ -37,7 +37,7 @@
 - [x] [案例1](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example1.html.htm)
 - [x] [案例2](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example2.html.htm)
 - [x] [案例3](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example3.html.htm)
-- [ ] [案例4](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example4.html.htm)
+- [x] [案例4](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example4.html.htm)
 - [ ] [案例5](http://www.gbtags.com/gb/demoviewer/10407/a6b8d138-4f9f-4b2e-812e-416ece45b95f/example5.html.htm)
 
 ### 数据筛选（1d）
