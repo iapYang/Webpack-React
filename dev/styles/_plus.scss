@@ -2,6 +2,7 @@
 
 #plus {
     position: relative;
+    margin-bottom: 60px;
 
     .plus-wrapper {
         position: relative;
@@ -33,6 +34,7 @@
         ul {
             position: relative;
             display: block;
+            padding-bottom: 60px;
 
             li {
                 position: relative;
@@ -60,6 +62,15 @@
                         right: 0;
                     }
                 }
+
+                &.total {
+                    background-color: transparent;
+                    cursor: default;
+                }
+
+                &.active {
+                    background-color: #8ec16d;
+                }
             }
         }
 
@@ -70,6 +81,4 @@
             margin: 10px 0;
         }
     }
-
-
 }
