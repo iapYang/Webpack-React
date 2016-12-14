@@ -30,7 +30,7 @@ class Query extends React.Component {
     constructor() {
         super();
         this.state = {
-            filtered : data_list,
+            filtered: data_list,
             value: '',
         };
     }
