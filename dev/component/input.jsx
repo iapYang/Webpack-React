@@ -15,7 +15,6 @@ class Input extends React.Component {
     }
     handleChange(event) {
         this.setState({value: event.target.value});
-        console.log(this.state.value);
     }
     handleBodyClick(event) {
         event.stopPropagation();

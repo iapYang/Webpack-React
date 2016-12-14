@@ -42,11 +42,11 @@ class Plus extends React.Component {
         const sum = this.sum.call(this);
 
         return (
-            <div className="plus-wrapper">
-                <div className="plus-header">
+            <div className='plus-wrapper'>
+                <div className='plus-header'>
                     <span>Services</span>
                 </div>
-                <div className="plus-content">
+                <div className='plus-content'>
                     <List
                         onClick={this.handleClick.bind(this)}
                         goods={this.state.goods}

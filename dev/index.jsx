@@ -5,6 +5,7 @@ import Game from './component/game.jsx';
 import Nav from './component/nav.jsx';
 import Input from './component/input.jsx';
 import Plus from './component/plus.jsx';
+import Query from './component/query.jsx';
 import './styles/index.scss';
 import './scripts/index.js';
 
@@ -17,6 +18,8 @@ import './scripts/index.js';
 //   <Game />,
 //   document.getElementById('container')
 // );
+
+// tutorial start
 
 ReactDOM.render(
   <Nav />,
@@ -31,4 +34,9 @@ ReactDOM.render(
 ReactDOM.render(
   <Plus />,
   document.getElementById('plus')
+);
+
+ReactDOM.render(
+  <Query />,
+  document.getElementById('query')
 );

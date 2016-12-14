@@ -17,8 +17,8 @@ class Nav extends React.Component {
     }
     render () {
         return (
-            <div className="nav-wrapper">
-                <div className="nav-header">
+            <div className='nav-wrapper'>
+                <div className='nav-header'>
                     <NameList
                         names={names}
                         index={this.state.nav_index}
@@ -55,10 +55,10 @@ function Details(props) {
     const name = names[props.index];
 
     return (
-        <div className="nav-body">
-            <div className="nav-body-wrapper">
+        <div className='nav-body'>
+            <div className='nav-body-wrapper'>
                 <span>You chose </span>
-                <span className="nav-name">{name}</span>
+                <span className='nav-name'>{name}</span>
             </div>
         </div>
     );
