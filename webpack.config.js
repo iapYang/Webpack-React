@@ -9,10 +9,13 @@ var dir_dev = './dev';
 //webpack-dev-server --progress --colors
 
 module.exports = {
-    entry: path.resolve(dir_dev, 'index.jsx'),
+    entry: {
+        'tutorial': path.resolve(dir_dev, 'tutorial.jsx'),
+        'refinery': path.resolve(dir_dev, 'refinery.jsx'),
+    },
     output: {
         path: './dist',
-        filename: 'bundle.js',
+        filename: './scripts/[name].js',
         // publicPath: '/assets/',
     },
     devServer: {
@@ -22,8 +25,9 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
         new CopyWebpackPlugin([{
-            from: './dev/index.html',
-        }, {
+            from: '*.html',
+            context: './dev/',
+        },{
             from: './dev/favicon.ico',
         },{
             from: './dev/images',
