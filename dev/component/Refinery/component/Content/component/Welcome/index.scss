@@ -1,0 +1,69 @@
+#refinery .refinery-wrapper .refinery-content .welcome {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    .logo {
+        width: 130px;
+        margin: 5% auto 0;
+    }
+
+    .title {
+        width: 620px;
+        margin: 1% auto 0;
+    }
+
+    .desc {
+        text-align: center;
+
+        span {
+            display: inline-block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ce912c;
+            font-family: BrownStdBold;
+            font-size: 14px;
+        }
+    }
+
+    .btn-start {
+        display: inline-block;
+        margin-top: 5%;
+        padding: 13px 36px 12px;
+        cursor: pointer;
+        transition: color 0.3s ease,background-color 0.3s ease;
+        text-align: center;
+        color: #ce912c;
+        border: 2px solid #ce912c;
+        border-radius: 40px;
+
+        .text {
+            font-family: BrownStdBold;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .symbol {
+            font-family: refinery29;
+            font-size: 11px;
+            padding-left: 4px;
+        }
+    }
+
+    .check-out {
+        position: relative;
+        margin-top: 6%;
+
+        a {
+            color: #ce912c;
+            opacity: 0.5;
+            font-family: BrownStdBold;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    }
+}
