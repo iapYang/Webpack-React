@@ -8,6 +8,7 @@ import Plus from './component/plus.jsx';
 import Query from './component/query.jsx';
 import './styles/index.scss';
 import './scripts/index.js';
+import Filter from './component/Filter';
 
 // ReactDOM.render(
 //   <Calculator />,
@@ -39,4 +40,9 @@ ReactDOM.render(
 ReactDOM.render(
   <Query />,
   document.getElementById('query')
+);
+
+ReactDOM.render(
+  <Filter />,
+  document.getElementById('filter')
 );

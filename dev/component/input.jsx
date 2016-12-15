@@ -34,7 +34,8 @@ class Input extends React.Component {
         return (
             <div className='input-wrapper' onClick={this.handleClick} >
                 <form
-                    className={classNames({'input-form':true, show:this.state.show})}>
+                    className={classNames({'input-form': true,
+                        show: this.state.show})}>
                     <input
                         type='text'
                         value={this.state.value}
