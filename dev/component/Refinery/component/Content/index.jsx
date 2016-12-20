@@ -1,27 +1,42 @@
 import React from 'react';
 import Welcome from './component/Welcome';
-import Person from './Component/Person';
+import Person from './component/Person';
 
 class Index extends React.Component {
     constructor() {
         super();
         this.state = {
-            'welcome-show': true,
+            show: 0,
+            'person-choice': -1,
+            'person-next-disabled': true,
         };
     }
-    handleWelcomeClick() {
+    handleNextClick(i) {
         this.setState({
-            'welcome-show': false,
+            show: i + 1,
+        });
+    }
+    handlePersonClick(i) {
+        this.setState({
+            'person-choice': i,
+            'person-next-disabled': false,
         });
     }
     render () {
         return (
             <div className='refinery-content'>
                 <Welcome
-                    onClick={this.handleWelcomeClick.bind(this)} show={this.state['welcome-show']}
+                    index={0}
+                    onNextClick={this.handleNextClick.bind(this)}
+                    show={this.state.show}
                     />
                 <Person
-                    show={true}
+                    index={1}
+                    onNextClick={this.handleNextClick.bind(this)}
+                    onPersonClick={this.handlePersonClick.bind(this)}
+                    show={this.state.show}
+                    choice={this.state['person-choice']}
+                    ifDisabled={this.state['person-next-disabled']}
                     />
             </div>
         );
