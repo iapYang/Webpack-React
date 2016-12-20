@@ -3,10 +3,11 @@ import classNames from 'classNames';
 
 class Index extends React.Component {
     render () {
-        const class_name = classNames({welcome: true,
-            show: this.props.show});
-
-        console.log(this.props.show);
+        const class_name = classNames({
+            welcome: true,
+            show: this.props.show,
+            frame: true,
+        });
 
         return (
             <div className={class_name}>
