@@ -1,32 +1,6 @@
 import React from 'react';
 import classNames from 'classNames';
 
-const pictures = [{
-    noraml: 'mom.svg',
-    hover: 'mom_hover.svg',
-    name: 'mom',
-}, {
-    noraml: 'dad.svg',
-    hover: 'dad_hover.svg',
-    name: 'dad',
-}, {
-    noraml: 'so.svg',
-    hover: 'so_hover.svg',
-    name: 's.o.',
-}, {
-    noraml: 'bff.svg',
-    hover: 'bff_hover.svg',
-    name: 'bff',
-}, {
-    noraml: 'work.svg',
-    hover: 'work_hover.svg',
-    name: 'work spouse',
-}, {
-    noraml: 'surprise.svg',
-    hover: 'surprise_hover.svg',
-    name: 'surprise me',
-}];
-
 class Index extends React.Component {
     render () {
         const class_name = classNames({
@@ -35,9 +9,11 @@ class Index extends React.Component {
             frame: true,
         });
 
+        const ifDisabled = this.props.ifDisabledArray[this.props.index];
+
         const btn_class = classNames({
             'btn-next': true,
-            disabled: this.props.ifDisabled,
+            disabled: ifDisabled,
         });
 
         return (
@@ -48,7 +24,8 @@ class Index extends React.Component {
                     </div>
                     <List
                         onClick={this.props.onPersonClick.bind(this)}
-                        choice={this.props.choice}
+                        person_choice={this.props.person_choice}
+                        pictures={this.props.pictures}
                         />
                     <div
                         className={btn_class}
@@ -64,11 +41,11 @@ class Index extends React.Component {
 }
 
 function List(props) {
-    const listItems = pictures.map((picture, index) =>
+    const listItems = props.pictures.map((picture, index) =>
         <li
             key={`list_${index}`}
             onClick={props.onClick.bind(this, index)}
-            className={index === props.choice ? 'active' : 'inactive'}
+            className={index === props.person_choice ? 'active' : 'inactive'}
             >
             <div className='picture'>
                 <img src={`./images/${picture.noraml}`} className='normal'/>

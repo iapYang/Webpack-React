@@ -1,0 +1,20 @@
+#refinery .refinery-wrapper .refinery-content .trait .wrapper {
+    .title {
+        width: 571px;
+        margin: 0 auto;
+        text-align: center;
+
+        span {
+            color: #ce912c;
+            font-family: BrownStdBold;
+            font-size: 22px;
+            line-height: 44px;
+            letter-spacing: 2px;
+        }
+
+        .name {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+    }
+}
