@@ -9,6 +9,8 @@ class Index extends React.Component {
             frame: true,
         });
 
+        console.log('aaaaa');
+
         return (
             <div className={class_name}>
                 <div className='logo'>

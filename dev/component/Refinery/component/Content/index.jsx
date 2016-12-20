@@ -1,13 +1,12 @@
 import React from 'react';
 import Welcome from './component/Welcome';
-import ChoosePerson from './Component/ChoosePerson';
+import Person from './Component/Person';
 
 class Index extends React.Component {
     constructor() {
         super();
         this.state = {
             'welcome-show': true,
-            'person-show': false,
         };
     }
     handleWelcomeClick() {
@@ -21,8 +20,8 @@ class Index extends React.Component {
                 <Welcome
                     onClick={this.handleWelcomeClick.bind(this)} show={this.state['welcome-show']}
                     />
-                <ChoosePerson
-                    show={this.state['person-show']}
+                <Person
+                    show={true}
                     />
             </div>
         );
