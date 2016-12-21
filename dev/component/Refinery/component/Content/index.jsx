@@ -37,31 +37,52 @@ class Index extends React.Component {
             };
         });
     }
+    chooseRenderDom() {
+        switch (this.state.show) {
+            case 0:
+                return (
+                    <Welcome
+                        index={this.state.show}
+                        onNextClick={this.handleNextClick.bind(this)}
+                        show={this.state.show}
+                        ifDisabledArray={this.state['next-disabled']}/>
+                );
+            case 1:
+                return (
+                    <Person
+                        index={this.state.show}
+                        onNextClick={this.handleNextClick.bind(this)}
+                        onPersonClick={this.handlePersonClick.bind(this)}
+                        show={this.state.show}
+                        person_choice={this.state['person-choice']}
+                        ifDisabledArray={this.state['next-disabled']}
+                        pictures={database.pictures}
+                        />
+                );
+            case 2:
+                return (
+                    <Trait
+                        index={this.state.show}
+                        onNextClick={this.handleNextClick.bind(this)}
+                        show={this.state.show}
+                        ifDisabledArray={this.state['next-disabled']}
+                        person_choice={this.state['person-choice']}
+                        />
+                );
+            default:
+                return (
+                    <div>
+                        Sorry!
+                    </div>
+                );
+        }
+    }
     render () {
+        const render_dom = this.chooseRenderDom.call(this);
+
         return (
             <div className='refinery-content'>
-                <Welcome
-                    index={0}
-                    onNextClick={this.handleNextClick.bind(this)}
-                    show={this.state.show}
-                    ifDisabledArray={this.state['next-disabled']}
-                    />
-                <Person
-                    index={1}
-                    onNextClick={this.handleNextClick.bind(this)}
-                    onPersonClick={this.handlePersonClick.bind(this)}
-                    show={this.state.show}
-                    person_choice={this.state['person-choice']}
-                    ifDisabledArray={this.state['next-disabled']}
-                    pictures={database.pictures}
-                    />
-                <Trait
-                    index={2}
-                    onNextClick={this.handleNextClick.bind(this)}
-                    show={this.state.show}
-                    ifDisabledArray={this.state['next-disabled']}
-                    person_choice={this.state['person-choice']}
-                    />
+                {render_dom}
             </div>
         );
     }

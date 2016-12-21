@@ -5,7 +5,6 @@ class Index extends React.Component {
     render () {
         const class_name = classNames({
             welcome: true,
-            show: this.props.index === this.props.show,
             frame: true,
         });
 
