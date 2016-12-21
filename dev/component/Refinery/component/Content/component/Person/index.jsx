@@ -13,7 +13,7 @@ class Index extends React.Component {
         };
     }
     handleNextClick() {
-        if (this.state.disabled) return;
+        if (this.state['next-disabled']) return;
 
         this.props.onNextClick.call(this, this.props.index, this.state);
     }

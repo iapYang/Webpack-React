@@ -28,6 +28,21 @@ class Index extends React.Component {
 
         this.setState(obj);
     }
+    handleFetchData() {
+        const url = 'https://cdn.contentful.com/spaces/gju6m3ezaxar/entries?content_type=jsonFull&include=10&limit=200&access_token=e887c7cd3298dd5e14cce7cd22523670abea9de380aef548efcbcb4b3a612ee9';
+
+        fetch(url, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+        })
+            .then(response =>
+                response.json()
+            )
+            .then(json => {
+                console.log(json.items[0].fields.jsonFull.feed.entry);
+            });
+    }
     chooseRenderDom() {
         switch (this.state.current_show) {
             case 0:
@@ -63,6 +78,10 @@ class Index extends React.Component {
     }
     render () {
         const render_dom = this.chooseRenderDom.call(this);
+
+        if (this.state.current_show === 3) {
+            this.handleFetchData.call(this);
+        }
 
         return (
             <div className='refinery-content'>
