@@ -1,34 +1,48 @@
 import React from 'react';
 import classNames from 'classNames';
 
+import database from '../../database.jsx';
+
 class Index extends React.Component {
-    render () {
-        const class_name = classNames({
-            person: true,
-            frame: true,
+    constructor() {
+        super();
+
+        this.state = {
+            choice: -1,
+            'next-disabled': true,
+        };
+    }
+    handleNextClick() {
+        if (this.state.disabled) return;
+
+        this.props.onNextClick.call(this, this.props.index, this.state);
+    }
+    handleClick(i) {
+        this.setState({
+            choice: i,
+            'next-disabled': false,
         });
-
-        const ifDisabled = this.props.ifDisabledArray[this.props.index];
-
+    }
+    render () {
         const btn_class = classNames({
             'btn-next': true,
-            disabled: ifDisabled,
+            disabled: this.state['next-disabled'],
         });
 
         return (
-            <div className={class_name}>
+            <div className='person frame'>
                 <div className='wrapper'>
                     <div className='title'>
                         <span>Who are you shopping for?</span>
                     </div>
                     <List
-                        onClick={this.props.onPersonClick.bind(this)}
-                        person_choice={this.props.person_choice}
-                        pictures={this.props.pictures}
+                        onClick={this.handleClick.bind(this)}
+                        person_choice={this.state.choice}
+                        pictures={database.pictures}
                         />
                     <div
                         className={btn_class}
-                        onClick={this.props.onNextClick.bind(this, this.props.index)}
+                        onClick={this.handleNextClick.bind(this)}
                         >
                         <span className='text'>ONWARD</span>
                         <span className='symbol'>l</span>

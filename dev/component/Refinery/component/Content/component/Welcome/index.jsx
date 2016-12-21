@@ -2,14 +2,19 @@ import React from 'react';
 import classNames from 'classNames';
 
 class Index extends React.Component {
-    render () {
-        const class_name = classNames({
-            welcome: true,
-            frame: true,
-        });
+    constructor() {
+        super();
 
+        this.state = {
+            'next-disabled': false,
+        };
+    }
+    handleNextClick() {
+        this.props.onNextClick.call(this, this.props.index, this.state);
+    }
+    render () {
         return (
-            <div className={class_name}>
+            <div className='welcome frame'>
                 <div className='wrapper'>
                     <div className='logo'>
                         <img src='./images/logo.png' />
@@ -24,7 +29,7 @@ class Index extends React.Component {
                     </div>
                     <div
                         className='btn-start'
-                        onClick={this.props.onNextClick.bind(this, this.props.index)}
+                        onClick={this.handleNextClick.bind(this)}
                         >
                         <span className='text'>begin</span>
                         <span className='symbol'>l</span>

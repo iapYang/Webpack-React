@@ -24,6 +24,4 @@ module.pictures = [{
     name: 'surprise me',
 }];
 
-module.traits = [];
-
 export default module;

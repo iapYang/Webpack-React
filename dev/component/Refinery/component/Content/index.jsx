@@ -11,67 +11,51 @@ class Index extends React.Component {
     constructor() {
         super();
         this.state = {
-            show: 0,
-            'person-choice': -1,
-            'next-disabled': [false, true, true],
+            current_show: 0,
         };
     }
-    handleNextClick(i) {
-        if (this.state['next-disabled'][i]) return;
-
-        this.setState({
-            show: i + 1,
-        });
+    handleBackClick(i) {
+        this.setState(prevState => ({
+            current_show: prevState.current_show - 1,
+        }));
     }
-    handlePersonClick(i) {
-        this.setState(prevState => {
-            const new_state = update(prevState['next-disabled'], {
-                [1]: {
-                    $set: false,
-                },
-            });
+    handleNextClick(i, property) {
+        const property_names = ['welcome', 'person', 'trait'];
 
-            return {
-                'person-choice': i,
-                'next-disabled': new_state,
-            };
-        });
+        const obj = {};
+        obj[property_names[i]] = property;
+        obj.current_show = i + 1;
+
+        this.setState(obj);
     }
     chooseRenderDom() {
-        switch (this.state.show) {
+        switch (this.state.current_show) {
             case 0:
                 return (
                     <Welcome
-                        index={this.state.show}
+                        index={this.state.current_show}
                         onNextClick={this.handleNextClick.bind(this)}
-                        show={this.state.show}
-                        ifDisabledArray={this.state['next-disabled']}/>
+                        />
                 );
             case 1:
                 return (
                     <Person
-                        index={this.state.show}
+                        index={this.state.current_show}
                         onNextClick={this.handleNextClick.bind(this)}
-                        onPersonClick={this.handlePersonClick.bind(this)}
-                        show={this.state.show}
-                        person_choice={this.state['person-choice']}
-                        ifDisabledArray={this.state['next-disabled']}
-                        pictures={database.pictures}
                         />
                 );
             case 2:
                 return (
                     <Trait
-                        index={this.state.show}
+                        index={this.state.current_show}
                         onNextClick={this.handleNextClick.bind(this)}
-                        show={this.state.show}
-                        ifDisabledArray={this.state['next-disabled']}
-                        person_choice={this.state['person-choice']}
+                        person_choice={this.state.person.choice}
+                        onBackClick={this.handleBackClick.bind(this)}
                         />
                 );
             default:
                 return (
-                    <div>
+                    <div className='sorry'>
                         Sorry!
                     </div>
                 );

@@ -5,6 +5,15 @@
     bottom: 0;
     background-color: #fcf3f4;
 
+    .sorry {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 100px;
+    }
+
     .frame {
         position: absolute;
         left: 0;
@@ -18,6 +27,39 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%,-50%);
+
+            .btn-next {
+                position: relative;
+                padding: 14px 30px 12px;
+                margin-top: 5%;
+                display: inline-block;
+                text-align: center;
+                color: #ce912c;
+                border-radius: 40px;
+                transition: color 0.3s ease,background-color 0.3s ease;
+                border: 2px solid #ce912c;
+                cursor: pointer;
+                text-align: center;
+
+                .text {
+                    font-family: BrownStdBold;
+                    font-size: 16px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                }
+
+                .symbol {
+                    font-family: refinery29;
+                    font-size: 13px;
+                    padding-left: 6px;
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+                    cursor: default;
+                    transition: all 0.3s ease;
+                }
+            }
         }
     }
 }

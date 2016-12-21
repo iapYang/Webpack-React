@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classNames';
+import update from 'immutability-helper';
 
 import database from '../../database.jsx';
 
@@ -8,19 +9,56 @@ class Index extends React.Component {
         super();
         this.state = {
             number: 3,
+            traits: [{
+                name: 'chill',
+                selected: false,
+            }, {
+                name: 'chic aesthete',
+                selected: false,
+            }, {
+                name: 'emo',
+                selected: false,
+            }, {
+                name: 'type a',
+                selected: false,
+            }, {
+                name: 'early adopter',
+                selected: false,
+            }, {
+                name: 'fancy',
+                selected: false,
+            }],
         };
     }
-    render () {
-        const class_name = classNames({
-            trait: true,
-            frame: true,
+    handleClick(i) {
+        this.setState(prevState => {
+            const prevSelected = prevState.traits[i].selected;
+
+            if (this.state.number <= 0 && !prevSelected) return;
+
+            const new_trait = update(prevState.traits, {
+                [i]: {
+                    selected: {
+                        $set: !prevSelected,
+                    },
+                },
+            });
+
+            return {
+                number: prevSelected ? prevState.number + 1 : prevState.number - 1,
+                traits: new_trait,
+            };
         });
+    }
+    handleNextClick(i) {
+        if (this.state.number !== 0) return;
 
-        const ifDisabled = this.props.ifDisabledArray[this.props.index];
-
+        this.props.onNextClick.call(this, this.props.index, this.state);
+    }
+    render () {
         const btn_class = classNames({
             'btn-next': true,
-            disabled: ifDisabled,
+            disabled: this.state.number !== 0,
         });
 
         let name;
@@ -30,12 +68,17 @@ class Index extends React.Component {
             name = '';
         }
 
-        const plural_class = classNames({
-            show: this.state.number !== 1,
-        });
+        const plural = this.state.number === 1 ? '' : 's';
 
         return (
-            <div className={class_name}>
+            <div className='trait frame'>
+                <div
+                    onClick={this.props.onBackClick.bind(this, this.props.index)}
+                    className='back-container'
+                    >
+                    <span className='arrow'>r</span>
+                    <span className='back'>back</span>
+                </div>
                 <div className='wrapper'>
                     <div className='title'>
                         <span>What is your </span>
@@ -50,13 +93,48 @@ class Index extends React.Component {
                             {this.state.number}
                         </span>
                         <span> trait</span>
-                        <span className={plural_class}>s</span>
+                        <span>{plural}</span>
                         <span>.</span>
+                    </div>
+                    <List
+                        onClick={this.handleClick.bind(this)}
+                        traits={this.state.traits}
+                        />
+                    <div
+                        className={btn_class}
+                        onClick={this.handleNextClick.bind(this)}
+                        >
+                        <span className='text'>see gifts</span>
+                        <span className='symbol'>l</span>
                     </div>
                 </div>
             </div>
         );
     }
+}
+
+function List(props) {
+    const listItems = props.traits.map((trait, index) =>
+        <li
+            key={`list_${index}`}
+            onClick={props.onClick.bind(this, index)}
+            className={trait.selected ? 'active' : 'inactive'}
+            >
+            <div className='circle-container'>
+                <div className='circle'></div>
+                <img className='circle-hover' src='./images/circle_hover.png'/>
+            </div>
+            <div className='name'>
+                <span>{trait.name}</span>
+            </div>
+        </li>
+    );
+
+    return (
+        <ul className='trait-list'>
+            {listItems}
+        </ul>
+    );
 }
 
 export default Index;
