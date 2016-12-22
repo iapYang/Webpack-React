@@ -2,10 +2,13 @@ import React from 'react';
 import update from 'immutability-helper';
 
 import database from './database.jsx';
+import fetchData from './fetchData.js';
 
 import Welcome from './component/Welcome';
 import Person from './component/Person';
 import Trait from './component/Trait';
+
+let rawData = {};
 
 class Index extends React.Component {
     constructor() {
@@ -28,20 +31,17 @@ class Index extends React.Component {
 
         this.setState(obj);
     }
-    handleFetchData() {
-        const url = 'https://cdn.contentful.com/spaces/gju6m3ezaxar/entries?content_type=jsonFull&include=10&limit=200&access_token=e887c7cd3298dd5e14cce7cd22523670abea9de380aef548efcbcb4b3a612ee9';
+    handleFilter() {
+        const personName = database.pictures[this.state.person.choice].gsx$person;
+        const filtered = [];
+        this.state.trait.traits.forEach(item => {
+            if (item.selected) {
+                console.log(rawData[personName]);
+                filtered.push(rawData[personName][item.gsx$trait]);
+            }
+        });
 
-        fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default',
-        })
-            .then(response =>
-                response.json()
-            )
-            .then(json => {
-                console.log(json.items[0].fields.jsonFull.feed.entry);
-            });
+        console.log(filtered);
     }
     chooseRenderDom() {
         switch (this.state.current_show) {
@@ -80,7 +80,14 @@ class Index extends React.Component {
         const render_dom = this.chooseRenderDom.call(this);
 
         if (this.state.current_show === 3) {
-            this.handleFetchData.call(this);
+            if (fetchData.isEmpty(rawData)) {
+                fetchData.handleFetchData(result => {
+                    rawData = result;
+                    this.handleFilter.call(this);
+                });
+            } else {
+                this.handleFilter.call(this);
+            }
         }
 
         return (
