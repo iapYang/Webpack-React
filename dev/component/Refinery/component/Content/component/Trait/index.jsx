@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classNames';
 import update from 'immutability-helper';
 
-import database from '../../database.jsx';
+import database from '../../module/database.js';
 
 class Index extends React.Component {
     constructor() {
