@@ -8,6 +8,7 @@ import Welcome from './component/Welcome';
 import Person from './component/Person';
 import Trait from './component/Trait';
 import Showcase from './component/Showcase';
+import GlobalControl from './component/GlobalControl';
 
 let rawData = {};
 
@@ -17,6 +18,7 @@ class Index extends React.Component {
         this.state = {
             current_show: 0,
             filtered: [],
+            global_show: false,
         };
     }
     handleBackClick(i) {
@@ -158,6 +160,7 @@ class Index extends React.Component {
         return (
             <div className='refinery-content'>
                 {render_dom}
+                {this.state.global_show ? <GlobalControl /> : ''}
             </div>
         );
     }
