@@ -2,7 +2,7 @@ import React from 'react';
 import update from 'immutability-helper';
 
 import database from './module/database.js';
-import fetchData from './module/fetchData.js';
+import util from './module/util.js';
 
 import Welcome from './component/Welcome';
 import Person from './component/Person';
@@ -25,23 +25,58 @@ class Index extends React.Component {
         }));
     }
     handleNextClick(i, property) {
-        const property_names = ['welcome', 'person', 'trait'];
+        switch (i) {
+            case 0:
+                this.setState({
+                    welcome: property,
+                    current_show: i + 1,
+                });
+                break;
+            case 1:
+                if (property.choice === 5) {
+                    const tmp_traits = util.shuffle(database.traits);
 
-        const obj = {};
-        obj[property_names[i]] = property;
-        obj.current_show = i + 1 === 3 ? 555 : i + 1;
+                    for (let i = 0; i < 3; i++) {
+                        tmp_traits[i].selected = true;
+                    }
 
-        if (obj.current_show === 555) {
-            this.handleFetch.call(this);
+                    this.setState({
+                        person: {
+                            choice: util.shuffle([0, 1, 2, 3, 4])[0],
+                            'next-disabled': true,
+                        },
+                        trait: {
+                            number: 0,
+                            traits: tmp_traits,
+                        },
+                        current_show: 555,
+                    });
+
+                    this.handleFetch.call(this);
+                } else {
+                    this.setState({
+                        person: property,
+                        current_show: i + 1,
+                    });
+                }
+                break;
+            case 2:
+                this.handleFetch.call(this);
+
+                this.setState({
+                    trait: property,
+                    current_show: 555,
+                });
+                break;
+            default:
+                break;
         }
-
-        this.setState(obj);
     }
     handleFetch() {
         console.log('handleFetch');
 
-        if (fetchData.isEmpty(rawData)) {
-            fetchData.handleFetchData(result => {
+        if (util.isEmpty(rawData)) {
+            util.fetchData(result => {
                 console.log('handleFetch empty');
                 rawData = result;
                 this.handleFilter.call(this);
@@ -55,10 +90,12 @@ class Index extends React.Component {
         console.log('handleFilter');
 
         const personName = database.pictures[this.state.person.choice].gsx$person;
-        const filtered = [];
+        console.log(personName);
+        let filtered = [];
         this.state.trait.traits.forEach(item => {
             if (item.selected) {
-                filtered.push(rawData[personName][item.gsx$trait]);
+                console.log(item.gsx$trait);
+                filtered = [...filtered, ...rawData[personName][item.gsx$trait]];
             }
         });
 

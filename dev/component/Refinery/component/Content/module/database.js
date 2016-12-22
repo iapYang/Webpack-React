@@ -30,4 +30,30 @@ module.pictures = [{
     gsx$person: 'Surprise Me',
 }];
 
+module.traits = [{
+    name: 'chill',
+    selected: false,
+    gsx$trait: 'Chill',
+}, {
+    name: 'chic aesthete',
+    selected: false,
+    gsx$trait: 'Chic Aesthete',
+}, {
+    name: 'emo',
+    selected: false,
+    gsx$trait: 'Emo',
+}, {
+    name: 'type a',
+    selected: false,
+    gsx$trait: 'Type A',
+}, {
+    name: 'early adopter',
+    selected: false,
+    gsx$trait: 'Early Adopter',
+}, {
+    name: 'fancy',
+    selected: false,
+    gsx$trait: 'Fancy',
+}];
+
 export default module;

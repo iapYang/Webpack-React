@@ -9,31 +9,7 @@ class Index extends React.Component {
         super();
         this.state = {
             number: 3,
-            traits: [{
-                name: 'chill',
-                selected: false,
-                gsx$trait: 'Chill',
-            }, {
-                name: 'chic aesthete',
-                selected: false,
-                gsx$trait: 'Chic Aesthete',
-            }, {
-                name: 'emo',
-                selected: false,
-                gsx$trait: 'Emo',
-            }, {
-                name: 'type a',
-                selected: false,
-                gsx$trait: 'Type A',
-            }, {
-                name: 'early adopter',
-                selected: false,
-                gsx$trait: 'Early Adopter',
-            }, {
-                name: 'fancy',
-                selected: false,
-                gsx$trait: 'Fancy',
-            }],
+            traits: database.traits,
         };
     }
     handleClick(i) {
