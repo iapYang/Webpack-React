@@ -6,7 +6,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var dir_dev = './dev';
 
 //command
-//webpack-dev-server --progress --colors
+//webpack-dev-server --progress --colors --open
 
 module.exports = {
     entry: {
