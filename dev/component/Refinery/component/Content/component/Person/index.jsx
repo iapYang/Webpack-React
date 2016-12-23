@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classNames';
 
 import database from '../../module/database.js';
+import util from '../../module/util.js';
 
 class Index extends React.Component {
     constructor() {
@@ -11,6 +12,11 @@ class Index extends React.Component {
             choice: -1,
             'next-disabled': true,
         };
+    }
+    componentWillMount() {
+        if (!util.isEmpty(this.props.status)) {
+            this.setState(this.props.status);
+        }
     }
     handleNextClick() {
         if (this.state['next-disabled']) return;

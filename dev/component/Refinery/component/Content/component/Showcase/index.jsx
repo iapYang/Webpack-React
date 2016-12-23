@@ -15,12 +15,7 @@ class Index extends React.Component {
             scroll.refresh();
         });
     }
-    handleClick() {
-
-    }
     render() {
-        console.log(this.props.filtered);
-
         return (
             <div
                 className='showcase'
@@ -36,7 +31,10 @@ class Index extends React.Component {
                         products={this.props.filtered}
                         />
                     <div className='controller'>
-                        <div className='btn btn-again'>play again</div>
+                        <div
+                            className='btn btn-again'
+                            onClick={this.props.onPlayAgainClick.bind(this)}
+                            >play again</div>
                         <div className='btn btn-share'>share</div>
                     </div>
                 </div>

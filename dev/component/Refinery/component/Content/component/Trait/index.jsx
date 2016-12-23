@@ -3,6 +3,7 @@ import classNames from 'classNames';
 import update from 'immutability-helper';
 
 import database from '../../module/database.js';
+import util from '../../module/util.js';
 
 class Index extends React.Component {
     constructor() {
@@ -11,6 +12,11 @@ class Index extends React.Component {
             number: 3,
             traits: database.traits,
         };
+    }
+    componentWillMount() {
+        if (!util.isEmpty(this.props.status)) {
+            this.setState(this.props.status);
+        }
     }
     handleClick(i) {
         this.setState(prevState => {

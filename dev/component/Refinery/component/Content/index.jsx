@@ -12,6 +12,13 @@ import GlobalControl from './component/GlobalControl';
 
 let rawData = {};
 
+const current_show_index = {
+    welcome: 0,
+    person: 1,
+    trait: 2,
+    showcase: 3,
+};
+
 class Index extends React.Component {
     constructor() {
         super();
@@ -28,13 +35,13 @@ class Index extends React.Component {
     }
     handleNextClick(i, property) {
         switch (i) {
-            case 0:
+            case current_show_index.welcome:
                 this.setState({
                     welcome: property,
                     current_show: i + 1,
                 });
                 break;
-            case 1:
+            case current_show_index.person:
                 if (property.choice === 5) {
                     const tmp_traits = util.shuffle(database.traits);
 
@@ -45,29 +52,41 @@ class Index extends React.Component {
                     this.setState({
                         person: {
                             choice: util.shuffle([0, 1, 2, 3, 4])[0],
-                            'next-disabled': true,
+                            'next-disabled': false,
                         },
                         trait: {
                             number: 0,
                             traits: tmp_traits,
                         },
                         current_show: 555,
+                    }, () => {
+                        this.handleFetch.call(this);
                     });
-
-                    this.handleFetch.call(this);
                 } else {
-                    this.setState({
-                        person: property,
-                        current_show: i + 1,
-                    });
+                    console.log(property);
+
+                    if (util.isEmpty(this.state.trait)) {
+                        this.setState({
+                            person: property,
+                            current_show: i + 1,
+                        });
+                    } else {
+                        this.setState({
+                            person: property,
+                            current_show: current_show_index.showcase,
+                        }, () => {
+                            this.handleFetch.call(this);
+                        });
+                    }
                 }
                 break;
-            case 2:
-                this.handleFetch.call(this);
-
+            case current_show_index.trait:
                 this.setState({
                     trait: property,
                     current_show: 555,
+                }, () => {
+                    console.log('trait');
+                    this.handleFetch.call(this);
                 });
                 break;
             default:
@@ -79,31 +98,64 @@ class Index extends React.Component {
 
         if (util.isEmpty(rawData)) {
             util.fetchData(result => {
-                console.log('handleFetch empty');
                 rawData = result;
                 this.handleFilter.call(this);
             });
         } else {
-            console.log('handleFetch full');
             this.handleFilter.call(this);
         }
     }
     handleFilter() {
-        console.log('handleFilter');
+        console.log('handleFilter', this.state.person.choice);
 
         const personName = database.pictures[this.state.person.choice].gsx$person;
-        console.log(personName);
         let filtered = [];
         this.state.trait.traits.forEach(item => {
             if (item.selected) {
-                console.log(item.gsx$trait);
                 filtered = [...filtered, ...rawData[personName][item.gsx$trait]];
             }
         });
 
+        console.log(filtered);
+
         this.setState({
             filtered,
-            current_show: 3,
+            current_show: current_show_index.showcase,
+            global_show: true,
+        });
+    }
+    handlePlayAgainClick() {
+        this.setState({
+            person: {},
+            trait: {},
+            current_show: current_show_index.person,
+            global_show: false,
+        });
+    }
+    handlePersonClick() {
+        this.setState(prevState => {
+            if (prevState.current_show === current_show_index.person) {
+                return {
+                    current_show: current_show_index.showcase,
+                };
+            }
+
+            return {
+                current_show: current_show_index.person,
+            };
+        });
+    }
+    handleTraitClick() {
+        this.setState(prevState => {
+            if (prevState.current_show === current_show_index.trait) {
+                return {
+                    current_show: current_show_index.showcase,
+                };
+            }
+
+            return {
+                current_show: current_show_index.trait,
+            };
         });
     }
     chooseRenderDom() {
@@ -119,6 +171,7 @@ class Index extends React.Component {
                 return (
                     <Person
                         index={this.state.current_show}
+                        status={this.state.person ? this.state.person : {}}
                         onNextClick={this.handleNextClick.bind(this)}
                         />
                 );
@@ -128,6 +181,7 @@ class Index extends React.Component {
                         index={this.state.current_show}
                         onNextClick={this.handleNextClick.bind(this)}
                         person_choice={this.state.person.choice}
+                        status={this.state.trait ? this.state.trait : {}}
                         onBackClick={this.handleBackClick.bind(this)}
                         />
                 );
@@ -138,6 +192,7 @@ class Index extends React.Component {
                         onNextClick={this.handleNextClick.bind(this)}
                         person_choice={this.state.person.choice}
                         onBackClick={this.handleBackClick.bind(this)}
+                        onPlayAgainClick={this.handlePlayAgainClick.bind(this)}
                         filtered={this.state.filtered}
                         />
                 );
@@ -160,7 +215,12 @@ class Index extends React.Component {
         return (
             <div className='refinery-content'>
                 {render_dom}
-                {this.state.global_show ? <GlobalControl /> : ''}
+                {this.state.global_show ?
+                    <GlobalControl
+                    flagTrait={this.state.current_show === current_show_index.showcase}
+                    onPersonClick={this.handlePersonClick.bind(this)}
+                    onTraitClick={this.handleTraitClick.bind(this)}
+                    /> : ''}
             </div>
         );
     }
