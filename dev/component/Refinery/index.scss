@@ -1,0 +1,27 @@
+@import "./styles/_mixin.scss";
+@import "./styles/_reset.scss";
+@include font-face("refinery29");
+@include font-face("BrownStdBold");
+@include font-face("BrownStdRegular");
+@include font-face("icomoon");
+
+body,
+html {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#refinery {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #f1f1f1;
+
+    .refinery-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+}
