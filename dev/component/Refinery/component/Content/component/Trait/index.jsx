@@ -6,18 +6,23 @@ import database from '../../module/database.js';
 import util from '../../module/util.js';
 
 class Index extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            number: 3,
-            traits: database.traits,
-        };
-    }
-    componentWillMount() {
-        if (!util.isEmpty(this.props.status)) {
-            this.setState(this.props.status);
+    constructor(props) {
+        super(props);
+        
+        if (!util.isEmpty(props.status)) {
+            this.state = props.status;
+        } else {
+            this.state = {
+                number: 3,
+                traits: database.traits,
+            };
         }
     }
+    // componentWillMount() {
+    //     if (!util.isEmpty(this.props.status)) {
+    //         this.setState(this.props.status);
+    //     }
+    // }
     handleClick(i) {
         this.setState(prevState => {
             const prevSelected = prevState.traits[i].selected;

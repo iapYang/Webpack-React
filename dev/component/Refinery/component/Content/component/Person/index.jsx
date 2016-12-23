@@ -5,13 +5,16 @@ import database from '../../module/database.js';
 import util from '../../module/util.js';
 
 class Index extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            choice: -1,
-            'next-disabled': true,
-        };
+    constructor(props) {
+        super(props);
+        if (!util.isEmpty(props.status)) {
+            this.state = props.status;
+        } else {
+            this.state = {
+                choice: -1,
+                'next-disabled': true,
+            };
+        }
     }
     componentWillMount() {
         if (!util.isEmpty(this.props.status)) {

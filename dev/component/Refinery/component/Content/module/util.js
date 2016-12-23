@@ -64,4 +64,15 @@ module.shuffle = array => {
 
     return array;
 };
+
+module.initArray = length => {
+    const array = [];
+
+    for (let i = 0; i < length - 1; i++) {
+        array.push(i);
+    }
+
+    return array;
+};
+
 export default module;

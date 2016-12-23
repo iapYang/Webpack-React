@@ -43,15 +43,26 @@ class Index extends React.Component {
                 break;
             case current_show_index.person:
                 if (property.choice === 5) {
-                    const tmp_traits = util.shuffle(database.traits);
+                    const tmp_traits = [];
+
+                    database.traits.forEach(item => {
+                        tmp_traits.push({
+                            name: item.name,
+                            selected: item.selected,
+                            gsx$trait: item.gsx$trait,
+                        });
+                    });
+
+                    const tmp_array = util.shuffle(util.initArray(tmp_traits.length));
 
                     for (let i = 0; i < 3; i++) {
-                        tmp_traits[i].selected = true;
+                        tmp_traits[tmp_array[i]].selected = true;
                     }
 
                     this.setState({
                         person: {
-                            choice: util.shuffle([0, 1, 2, 3, 4])[0],
+                            choice: util.shuffle(util
+                                .initArray(database.pictures.length - 1))[0],
                             'next-disabled': false,
                         },
                         trait: {
@@ -63,8 +74,6 @@ class Index extends React.Component {
                         this.handleFetch.call(this);
                     });
                 } else {
-                    console.log(property);
-
                     if (util.isEmpty(this.state.trait)) {
                         this.setState({
                             person: property,
@@ -115,8 +124,6 @@ class Index extends React.Component {
                 filtered = [...filtered, ...rawData[personName][item.gsx$trait]];
             }
         });
-
-        console.log(filtered);
 
         this.setState({
             filtered,
