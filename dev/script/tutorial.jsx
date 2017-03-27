@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import '../styles/tutorial.scss';
+import '../style/tutorial.scss';
 
 import Calculator from '../component/calculator.jsx';
 import Game from '../component/game.jsx';
