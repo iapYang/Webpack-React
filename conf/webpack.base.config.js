@@ -3,7 +3,7 @@ const glob = require('glob');
 const webpack = require('webpack');
 const postcssConfig = require('./postcss.config.js');
 
-const fontPath = path.resolve(process.cwd(), 'dev/font');
+const fontPath = path.resolve(process.cwd(), 'dev/component/Refinery/font');
 const picPath = path.resolve(process.cwd(), 'dev/image');
 
 const jsFiles = glob.sync('./dev/script/*.jsx');
@@ -17,7 +17,7 @@ const eslintLoader = {
 };
 
 jsFiles.forEach((file, i) => {
-    entry[path.basename(file, '.js')] = file;
+    entry[path.basename(file.replace('.jsx', ''), '.js')] = file;
 });
 
 module.exports = {
