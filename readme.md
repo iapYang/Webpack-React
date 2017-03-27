@@ -2,7 +2,7 @@
 
 ## Preview
 
-[Refinery Page]([https://iapyang.github.io/learn-webpa…](https://iapyang.github.io/learn-webpack-react/))
+[Refinery Page](https://iapyang.github.io/learn-webpack-react/)
 
 [Tutorial Page](https://iapyang.github.io/learn-webpack-react/tutorial.html)
 
