@@ -210,7 +210,7 @@ class Index extends React.Component {
                             <span>the search is on...</span>
                         </div>
                         <div className='wrapper'>
-                            <img src='./images/loading.gif'/>
+                            <img src='./image/loading.gif'/>
                         </div>
                     </div>
                 );

@@ -17,10 +17,10 @@ class Index extends React.Component {
             <div className='welcome frame'>
                 <div className='wrapper'>
                     <div className='logo'>
-                        <img src='./images/logo.png' />
+                        <img src='./image/logo.png' />
                     </div>
                     <div className='title'>
-                        <img src='./images/entrance.gif' />
+                        <img src='./image/entrance.gif' />
                     </div>
                     <div className='desc'>
                         <span>

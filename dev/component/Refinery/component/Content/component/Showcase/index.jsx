@@ -25,7 +25,7 @@ class Index extends React.Component {
                 >
                 <div className='content-wrapper'>
                     <div className='title'>
-                        <img src='./images/picks.png' />
+                        <img src='./image/picks.png' />
                     </div>
                     <List
                         products={this.props.filtered}

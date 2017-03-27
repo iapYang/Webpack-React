@@ -115,7 +115,7 @@ function List(props) {
             >
             <div className='circle-container'>
                 <div className='circle'></div>
-                <img className='circle-hover' src='./images/circle_hover.png'/>
+                <img className='circle-hover' src='./image/circle_hover.png'/>
             </div>
             <div className='name'>
                 <span>{trait.name}</span>

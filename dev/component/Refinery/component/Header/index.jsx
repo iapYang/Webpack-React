@@ -9,7 +9,7 @@ class Index extends React.Component {
                         href='http://www.refinery29.com'
                         target='_blank'>
                         <div className='logo'>
-                            <img src='./images/logo.svg' />
+                            <img src='./image/logo.svg' />
                         </div>
                     </a>
 

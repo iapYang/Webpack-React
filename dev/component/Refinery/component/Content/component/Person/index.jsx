@@ -70,8 +70,8 @@ function List(props) {
             className={index === props.person_choice ? 'active' : 'inactive'}
             >
             <div className='picture'>
-                <img src={`./images/${picture.noraml}`} className='normal'/>
-                <img src={`./images/${picture.hover}`} className='hover'/>
+                <img src={`./image/${picture.noraml}`} className='normal'/>
+                <img src={`./image/${picture.hover}`} className='hover'/>
             </div>
             <div className='name'>
                 <span>{picture.name}</span>
