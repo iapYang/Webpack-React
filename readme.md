@@ -1,11 +1,6 @@
 # Webpack & React
 
-## 使用步骤：
-
-1. npm install
-2. npm start
-3. 服务器：localhost:10000 (renfinery) localhost:10000/tutorial.html (五个小练习)
-4. 代码地址：./dev/component/Refinery
+## Preview
 
 ## webpack（1d）
 
