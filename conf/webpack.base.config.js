@@ -6,7 +6,7 @@ const postcssConfig = require('./postcss.config.js');
 const fontPath = path.resolve(process.cwd(), 'dev/font');
 const picPath = path.resolve(process.cwd(), 'dev/image');
 
-const jsFiles = glob.sync('./dev/script/*.js');
+const jsFiles = glob.sync('./dev/script/*.jsx');
 const entry = {};
 const eslintLoader = {
     loader: 'eslint-loader',
